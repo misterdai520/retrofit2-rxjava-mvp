@@ -16,9 +16,9 @@ import java.util.HashMap;
  * 邮箱：misterdai@126.com
  */
 
-public class Presenter extends BasePresenter<MainView> {
+public class LoginPresenter extends BasePresenter<MainView> {
 
-    public Presenter(MainView mvpView) {
+    public LoginPresenter(MainView mvpView) {
         attachView(mvpView);
     }
 

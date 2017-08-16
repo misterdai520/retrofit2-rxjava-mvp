@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "22.0.1"
     defaultConfig {
-        applicationId "com.waimaiwang.imihuang.waylala"
+        applicationId "com.retrofit.rxjava.mvp"
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
@@ -41,5 +41,4 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'
-    compile files('libs/Android_Map3D_SDK_V5.0.0_20170311.jar')
 }

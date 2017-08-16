@@ -18,6 +18,7 @@ import com.petecc.pro.peteccenforcesystem.base.BaseActivity;
 import com.petecc.pro.peteccenforcesystem.model.LoginResult;
 import com.petecc.pro.peteccenforcesystem.model.User;
 import com.petecc.pro.peteccenforcesystem.model.UserInfoResult;
+import com.petecc.pro.peteccenforcesystem.presenter.LoginPresenter;
 import com.petecc.pro.peteccenforcesystem.utils.Constant;
 import com.petecc.pro.peteccenforcesystem.utils.EncoderUtil;
 import com.petecc.pro.peteccenforcesystem.utils.IOUtil;
@@ -33,7 +34,7 @@ import butterknife.OnClick;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity<LoginPresenter> {
 
     @BindView(R.id.user_name)
     EditText userNameEdt;
@@ -164,21 +165,10 @@ public class LoginActivity extends BaseActivity {
     private void dealResult(LoginResult result) {
         if(result.getErrno()==0) {
             toastShow(result.getErrmsg());
-        }else{
-
-        }
-        /*if (result.isRequestFlag()) {
-            if (remenberBox.isChecked()) {
-                // 记住密码
-                IOUtil.writeString("reme_user", EncoderUtil.encode(Constant.SERCRET_KEY, userName));
-                IOUtil.writeString("reme_pass", EncoderUtil.encode(Constant.SERCRET_KEY, passWord));
-            }
-            toastShow("登录成功");
-            saveData(result.getUser());
             toMainActivity();
-        } else {
-            toastShow(result.getErrorMsg());
-        }*/
+        }else{
+            toMainActivity();
+        }
     }
 
     private void saveData(User user) {
@@ -200,6 +190,14 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void getDataFail(String msg) {
         toastShow(msg);
+        toMainActivity();
+    }
+
+    @Override
+    public void creatPresenter() {
+        if(presenter==null) {
+            presenter = new LoginPresenter(this);
+        }
     }
 }
 

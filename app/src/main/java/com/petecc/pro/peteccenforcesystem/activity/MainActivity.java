@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
@@ -15,17 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
-
-import com.amap.api.maps.MapView;
 import com.petecc.pro.peteccenforcesystem.R;
 import com.petecc.pro.peteccenforcesystem.adapter.MyRecycleViewAdapter;
-import com.petecc.pro.peteccenforcesystem.adapter.ViewPagerAdapter;
 import com.petecc.pro.peteccenforcesystem.base.BaseActivity;
 import com.petecc.pro.peteccenforcesystem.model.UserInfoResult;
-import com.petecc.pro.peteccenforcesystem.utils.UIHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +37,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     FloatingActionButton floatingActionButton;
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
-    @BindView(R.id.map)
-    MapView mapView;
 
 
     Context mContext;
@@ -56,46 +46,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_main);
         mContext = this;
         ButterKnife.bind(this);
-        mapView.onCreate(savedInstanceState);
-        if (mapView==null)
-            UIHelper.showToast("mapview==null");
         setView();
     }
-    /**
-     * 方法必须重写
-     */
+
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        mapView.onResume();
+    public void creatPresenter() {
+
     }
 
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
     private void setView() {
         setSupportActionBar(toolbar);//设置toolebar
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -6,10 +6,6 @@ import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.petecc.pro.peteccenforcesystem.R;
-import com.petecc.pro.peteccenforcesystem.presenter.Presenter;
 import com.petecc.pro.peteccenforcesystem.utils.UIHelper;
 import com.petecc.pro.peteccenforcesystem.widget.MainView;
 
@@ -18,8 +14,8 @@ import com.petecc.pro.peteccenforcesystem.widget.MainView;
  * 邮箱：misterdai@126.com
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements MainView {
-    public Presenter presenter;
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements MainView {
+    public T presenter;
     public Activity mContext;
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
@@ -39,9 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MainView
         mContext = this;
     }
 
-    public void creatPresenter(){
-        presenter = new Presenter(this);
-    }
+    public abstract void creatPresenter();
 
     @Override
     protected void onDestroy() {

@@ -39,4 +39,15 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return tabTitles[position];
     }
+
+    /**
+     * 把父类方法注销了可以防止页面被销毁
+     * @param container
+     * @param position
+     * @param object
+     */
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+//        super.destroyItem(container, position, object);
+    }
 }

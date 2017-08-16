@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.petecc.pro.peteccenforcesystem.presenter.Presenter;
 import com.petecc.pro.peteccenforcesystem.utils.UIHelper;
 import com.petecc.pro.peteccenforcesystem.widget.MainView;
 
@@ -20,18 +19,16 @@ import butterknife.ButterKnife;
  * 邮箱：misterdai@126.com
  */
 
-public abstract class BaseFragment extends Fragment implements MainView{
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements MainView{
     public Activity mContext;
-    public Presenter presenter;
+    public T presenter;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mContext = getActivity();
     }
 
-    public void creatPresenter(){
-        presenter = new Presenter(this);
-    }
+    public abstract void creatPresenter();
 
     public void toastShow(int resId) {
         Toast.makeText(mContext, resId, Toast.LENGTH_SHORT).show();
