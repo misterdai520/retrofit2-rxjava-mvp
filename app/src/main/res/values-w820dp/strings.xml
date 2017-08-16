@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="merchant_name">商户名称</string>
+    <string name="charge_person">负责人</string>
+    <string name="registration_number">注册号</string>
+    <string name="organization_name">机构名称</string>
+    <string name="phone_number">电话号码</string>
+    <string name="query">查询</string>
+    <string name="reset">重置</string>
+    <string name="type">类型</string>
+    <string name="load_more">加载更多...</string>
+</resources>
