@@ -24,7 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.toolbar)
@@ -69,15 +68,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
          strs.add(i+"项");
        }
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(new MyRecycleViewAdapter(strs,R.layout.recyclerview_item,mContext,false) {
+        recyclerView.setAdapter(new MyRecycleViewAdapter<String>(strs,R.layout.recyclerview_item,mContext,false) {
             @Override
             protected void setPositionClick(MyViewHolder holder, int position) {
                 toInfoActivity();
             }
 
             @Override
-            protected void initData(MyViewHolder holder, int position) {
-                holder.setText(R.id.item_text,strs.get(position));
+            protected void initData(MyViewHolder holder, int position, List<String> data) {
+                holder.setText(R.id.item_text,data.get(position));
             }
         });
     }

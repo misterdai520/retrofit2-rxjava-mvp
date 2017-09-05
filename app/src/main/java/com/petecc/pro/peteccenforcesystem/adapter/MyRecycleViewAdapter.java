@@ -119,7 +119,7 @@ public abstract class MyRecycleViewAdapter<T> extends RecyclerView.Adapter {
                     }
                 });
                 holder.itemView.setTag(position);
-                initData((MyViewHolder) holder, position);
+                initData((MyViewHolder) holder, position,list);
             }
 //            holder.itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -158,8 +158,9 @@ public abstract class MyRecycleViewAdapter<T> extends RecyclerView.Adapter {
      * 对item进行加载数据
      * @param holder recycleview的ViewHolder position位置
      * @param position
+     * @param list
      */
-    protected abstract void initData(MyViewHolder holder, int position);
+    protected abstract void initData(MyViewHolder holder, int position, List<T> data);
 
     //2、第二步，zaiViewHolder里面初始化视图
     public class MyViewHolder extends RecyclerView.ViewHolder {
